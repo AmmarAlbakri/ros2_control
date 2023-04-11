@@ -55,12 +55,16 @@ hardware_interface::BaseInterface<hardware_interface::[Actuator|Sensor|System]In
 
 8. Rename ``start()`` to ``on_activate(const rclcpp_lifecycle::State & previous_state)`` and
    ``stop()`` to ``on_deactivate(const rclcpp_lifecycle::State & previous_state)``
+   
+9. Change ``read()`` function to ``read(const rclcpp::Time & time, const rclcpp::Duration & period)``
 
-9. Change return type of ``on_activate`` and ``on_deactivate`` to ``CallbackReturn``
+10. Change ``write()`` should be changed to ``write(const rclcpp::Time & time, const rclcpp::Duration & period)``
 
-10. Change last return of ``on_activate`` and ``on_deactivate`` to ``return CallbackReturn::SUCCESS;``
+11. Change return type of ``on_activate`` and ``on_deactivate`` to ``CallbackReturn``
 
-11. If you have any ``return_type::ERROR`` in ``on_init``, ``on_activate``, or ``in_deactivate`` change to ``CallbackReturn::ERROR``
+12. Change last return of ``on_activate`` and ``on_deactivate`` to ``return CallbackReturn::SUCCESS;``
 
-12. If you get link errors with undefined refernences to symbols in ``rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface``, then add
-    ``rclcpp_lifecyle`` package dependency to ``CMakeLists.txt`` and ``package.xml``
+13. If you have any ``return_type::ERROR`` in ``on_init``, ``on_activate``, or ``in_deactivate`` change to ``CallbackReturn::ERROR``
+
+14. If you get link errors with undefined refernences to symbols in ``rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface``, then add
+    ``rclcpp_lifecycle`` package dependency to ``CMakeLists.txt`` and ``package.xml``
